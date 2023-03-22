@@ -25,31 +25,26 @@ public class MainActivity extends AppCompatActivity implements CarClick {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		fillList();
+		conected();
 	}
 
-	private void fillList () {
-		arrayList = new ArrayList<>();
-//
-//		Car car = new Car(
-//				"LEXUZSZ",
-//				"JAPAN CAR",
-//				R.drawable.ic_launcher_background);
-//		car.setName("Toyota");
-//		car.getName();
-		arrayList.add(new Car("LEXUS", "JAPAN CAR-LEXUS", R.drawable.lexus));
-		arrayList.add(new Car("TOYOTA", "JAPAN CAR-TOYOTA", R.drawable.toyota));
-		arrayList.add(new Car("BMW", "GERMANY CAR", R.drawable.bmw));
-		arrayList.add(new Car("HONDA", "JAPAN CAR-HONDA", R.drawable.honda));
-
+	private void conected() {
 		recyclerView = findViewById(R.id.rvmain);
 		adapter = new CarsAdapter(arrayList, this);
 		recyclerView.setAdapter(adapter);
 	}
 
+	private void fillList () {
+		arrayList = new ArrayList<>();
+		arrayList.add(new Car("LEXUS", "JAPAN CAR-LEXUS", R.drawable.lexus));
+		arrayList.add(new Car("TOYOTA", "JAPAN CAR-TOYOTA", R.drawable.toyota));
+		arrayList.add(new Car("BMW", "GERMANY CAR", R.drawable.bmw));
+		arrayList.add(new Car("HONDA", "JAPAN CAR-HONDA", R.drawable.honda));
+	}
+
 	@Override
 	public void onClick(Car car) {
 		Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-//		intent.putExtra("image", car.getImage());
 		intent.putExtra("text", car.getName());
 		intent.putExtra("image", car.getImage());
 		startActivity(intent);

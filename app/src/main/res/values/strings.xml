@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RV2</string>
+    <string name="text">text</string>
+    <string name="hello">HELLO</string>
 </resources>
