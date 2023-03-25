@@ -6,29 +6,24 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.rv2.databinding.ActivityDetailBinding;
 import com.example.rv2.recycler.Car;
 
 public class DetailActivity extends AppCompatActivity {
 
-	TextView name;
-	ImageView image;
+	ActivityDetailBinding binding;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_detail);
-		initID();
+		binding = ActivityDetailBinding.inflate(getLayoutInflater());
+		setContentView(binding.getRoot());
 		getInformation();
 	}
 
 	private void getInformation() {
 		String carName = getIntent().getStringExtra("text");
-		name.setText(carName);
-		image.setImageResource(getIntent().getIntExtra("image",0));
-	}
-
-	private void initID() {
-		name=findViewById(R.id.tvName);
-		image=findViewById(R.id.imageViewNew);
+		binding.tvName.setText(carName);
+		binding.imageViewNew.setImageResource(getIntent().getIntExtra("image",0));
 	}
 }

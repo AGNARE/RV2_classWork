@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.rv2.databinding.ActivityMainBinding;
 import com.example.rv2.recycler.Car;
 import com.example.rv2.recycler.CarClick;
 import com.example.rv2.recycler.CarsAdapter;
@@ -19,17 +20,18 @@ public class MainActivity extends AppCompatActivity implements CarClick {
 	ArrayList<Car> arrayList;
 	RecyclerView recyclerView;
 	CarsAdapter adapter;
+	ActivityMainBinding binding;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		binding = ActivityMainBinding.inflate(getLayoutInflater());
+		setContentView(binding.getRoot());
 		fillList();
 		conected();
 	}
 
 	private void conected() {
-		recyclerView = findViewById(R.id.rvmain);
 		adapter = new CarsAdapter(arrayList, this);
 		recyclerView.setAdapter(adapter);
 	}
